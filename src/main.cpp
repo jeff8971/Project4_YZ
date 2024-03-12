@@ -35,7 +35,12 @@ int main() {
 
         // Detect the chessboard corners
         if (detectChessboard(frame, patternSize, corner_set)) {
-            std::cout << "Chessboard detected: " << corner_set.size() << std::endl;
+            std::cout << "Number of Chessboard corner_set: " << corner_set.size() << std::endl;
+            if (!corner_set.empty()) {
+                // Draw the detected corners
+                std::cout << "Corner coordinates: " << corner_set[0].x << ", " << corner_set[0].y << std::endl;
+            }
+
         }
 
         cv::imshow("Chessboard", frame);
