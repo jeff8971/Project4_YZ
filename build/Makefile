@@ -129,6 +129,30 @@ chessboard/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/chessboard.dir/build.make CMakeFiles/chessboard.dir/build
 .PHONY : chessboard/fast
 
+src/camera_calibrate.o: src/camera_calibrate.cpp.o
+.PHONY : src/camera_calibrate.o
+
+# target to build an object file
+src/camera_calibrate.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chessboard.dir/build.make CMakeFiles/chessboard.dir/src/camera_calibrate.cpp.o
+.PHONY : src/camera_calibrate.cpp.o
+
+src/camera_calibrate.i: src/camera_calibrate.cpp.i
+.PHONY : src/camera_calibrate.i
+
+# target to preprocess a source file
+src/camera_calibrate.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chessboard.dir/build.make CMakeFiles/chessboard.dir/src/camera_calibrate.cpp.i
+.PHONY : src/camera_calibrate.cpp.i
+
+src/camera_calibrate.s: src/camera_calibrate.cpp.s
+.PHONY : src/camera_calibrate.s
+
+# target to generate assembly for a file
+src/camera_calibrate.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/chessboard.dir/build.make CMakeFiles/chessboard.dir/src/camera_calibrate.cpp.s
+.PHONY : src/camera_calibrate.cpp.s
+
 src/chessboard.o: src/chessboard.cpp.o
 .PHONY : src/chessboard.o
 
@@ -186,6 +210,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... chessboard"
+	@echo "... src/camera_calibrate.o"
+	@echo "... src/camera_calibrate.i"
+	@echo "... src/camera_calibrate.s"
 	@echo "... src/chessboard.o"
 	@echo "... src/chessboard.i"
 	@echo "... src/chessboard.s"

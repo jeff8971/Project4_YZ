@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/Users/jeff/Desktop/Project4_YZ/src/camera_calibrate.cpp" "CMakeFiles/chessboard.dir/src/camera_calibrate.cpp.o" "gcc" "CMakeFiles/chessboard.dir/src/camera_calibrate.cpp.o.d"
   "/Users/jeff/Desktop/Project4_YZ/src/chessboard.cpp" "CMakeFiles/chessboard.dir/src/chessboard.cpp.o" "gcc" "CMakeFiles/chessboard.dir/src/chessboard.cpp.o.d"
   "/Users/jeff/Desktop/Project4_YZ/src/main.cpp" "CMakeFiles/chessboard.dir/src/main.cpp.o" "gcc" "CMakeFiles/chessboard.dir/src/main.cpp.o.d"
   )

@@ -20,7 +20,7 @@ find_package(OpenCV REQUIRED)
 
 # Task: calibration
 # Add the executable that uses threshold_process.cpp and thresholding.cpp
-add_executable(chessboard ${CMAKE_SOURCE_DIR} ./src/chessboard.cpp  ./src/main.cpp)
+add_executable(chessboard ${CMAKE_SOURCE_DIR} ./src/chessboard.cpp  ./src/camera_calibrate.cpp ./src/main.cpp)
 # Link with OpenCV libraries
 target_link_libraries(chessboard PRIVATE ${OpenCV_LIBS})
 # Ensure the OpenCV include directories are available to the target

@@ -81,12 +81,12 @@ clean: CMakeFiles/chessboard.dir/clean
 CMakeFiles/chessboard.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/chessboard.dir/build.make CMakeFiles/chessboard.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/chessboard.dir/build.make CMakeFiles/chessboard.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/jeff/Desktop/Project4_YZ/build/CMakeFiles --progress-num=1,2,3 "Built target chessboard"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/jeff/Desktop/Project4_YZ/build/CMakeFiles --progress-num=1,2,3,4 "Built target chessboard"
 .PHONY : CMakeFiles/chessboard.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/chessboard.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jeff/Desktop/Project4_YZ/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jeff/Desktop/Project4_YZ/build/CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/chessboard.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jeff/Desktop/Project4_YZ/build/CMakeFiles 0
 .PHONY : CMakeFiles/chessboard.dir/rule
