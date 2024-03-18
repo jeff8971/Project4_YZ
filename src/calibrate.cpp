@@ -22,7 +22,7 @@ int main() {
     std::vector<std::vector<cv::Point2f>> corner_list; // To store the detected corners for all images
     std::vector<cv::Vec3f> object_set; // To store the 3D coordinates of the corners
     std::vector<std::vector<cv::Vec3f>> object_list; // To store the 3D coordinates for all images
-    std::vector<cv::Mat> rvecs, tvecs;
+    cv:: Mat rvecs, tvecs;
 
     std::string calibration_file_path = "/Users/jeff/Desktop/Project4_YZ/bin/calibrate.csv";
 

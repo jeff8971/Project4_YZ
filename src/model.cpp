@@ -23,7 +23,7 @@ int main() {
     std::vector<std::vector<cv::Point2f>> corner_list; // To store the detected corners for all images
     std::vector<cv::Vec3f> object_set; // To store the 3D coordinates of the corners
     std::vector<std::vector<cv::Vec3f>> object_list; // To store the 3D coordinates for all images
-    std::vector<cv::Mat> rvecs, tvecs;
+    cv:: Mat rvecs, tvecs;
 
     std::string calibration_file_path = "/Users/jeff/Desktop/Project4_YZ/bin/calibrate.csv";
 
@@ -89,24 +89,7 @@ int main() {
                 std::cerr << "Failed to save " << calibration_imageFile << std::endl;
             }
             std::cout << "Calibration image and corners saved " << corner_set.size() << std::endl;
-        } else if (key == 'c') {
-            if (corner_list.size() >= 5) {
-
-                double reProjectionError = cv::calibrateCamera(object_list, corner_list, frame.size(), camera_matrix, dist_coeffs, rvecs, tvecs, cv::CALIB_FIX_ASPECT_RATIO);
-                std::cout << "Camera matrix: " << std::endl << camera_matrix << std::endl;
-                std::cout << "Distortion coefficients: " << std::endl << dist_coeffs << std::endl;
-                std::cout << "Reprojection error: " << std::endl << reProjectionError << std::endl;
-            
-                if (save_camera_calibration(calibration_file_path, camera_matrix, dist_coeffs, reProjectionError) == 0) {
-                    std::cout << "Camera calibration parameters saved to "<< calibration_file_path << std::endl;
-                } else{
-                    std::cerr << "Failed to save camera calibration parameters" << std::endl;
-                }
-            }
-            else {
-                std::cerr << "Not enough images to calibrate the camera, need at least 5" << std::endl;
-            }
-        } else if (key == 'q' || key == 27) {
+        }  else if (key == 'q' || key == 27) {
             break;
         }
     }
