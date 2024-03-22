@@ -111,26 +111,56 @@ CMakeFiles/models.dir/src/file_utils.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/models.dir/src/file_utils.cpp.s"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jeff/Desktop/Project4_YZ/src/file_utils.cpp -o CMakeFiles/models.dir/src/file_utils.cpp.s
 
-CMakeFiles/models.dir/src/model.cpp.o: CMakeFiles/models.dir/flags.make
-CMakeFiles/models.dir/src/model.cpp.o: /Users/jeff/Desktop/Project4_YZ/src/model.cpp
-CMakeFiles/models.dir/src/model.cpp.o: CMakeFiles/models.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/jeff/Desktop/Project4_YZ/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/models.dir/src/model.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/models.dir/src/model.cpp.o -MF CMakeFiles/models.dir/src/model.cpp.o.d -o CMakeFiles/models.dir/src/model.cpp.o -c /Users/jeff/Desktop/Project4_YZ/src/model.cpp
+CMakeFiles/models.dir/src/load_model.cpp.o: CMakeFiles/models.dir/flags.make
+CMakeFiles/models.dir/src/load_model.cpp.o: /Users/jeff/Desktop/Project4_YZ/src/load_model.cpp
+CMakeFiles/models.dir/src/load_model.cpp.o: CMakeFiles/models.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/jeff/Desktop/Project4_YZ/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/models.dir/src/load_model.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/models.dir/src/load_model.cpp.o -MF CMakeFiles/models.dir/src/load_model.cpp.o.d -o CMakeFiles/models.dir/src/load_model.cpp.o -c /Users/jeff/Desktop/Project4_YZ/src/load_model.cpp
 
-CMakeFiles/models.dir/src/model.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/models.dir/src/model.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jeff/Desktop/Project4_YZ/src/model.cpp > CMakeFiles/models.dir/src/model.cpp.i
+CMakeFiles/models.dir/src/load_model.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/models.dir/src/load_model.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jeff/Desktop/Project4_YZ/src/load_model.cpp > CMakeFiles/models.dir/src/load_model.cpp.i
 
-CMakeFiles/models.dir/src/model.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/models.dir/src/model.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jeff/Desktop/Project4_YZ/src/model.cpp -o CMakeFiles/models.dir/src/model.cpp.s
+CMakeFiles/models.dir/src/load_model.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/models.dir/src/load_model.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jeff/Desktop/Project4_YZ/src/load_model.cpp -o CMakeFiles/models.dir/src/load_model.cpp.s
+
+CMakeFiles/models.dir/src/show_model.cpp.o: CMakeFiles/models.dir/flags.make
+CMakeFiles/models.dir/src/show_model.cpp.o: /Users/jeff/Desktop/Project4_YZ/src/show_model.cpp
+CMakeFiles/models.dir/src/show_model.cpp.o: CMakeFiles/models.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/jeff/Desktop/Project4_YZ/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/models.dir/src/show_model.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/models.dir/src/show_model.cpp.o -MF CMakeFiles/models.dir/src/show_model.cpp.o.d -o CMakeFiles/models.dir/src/show_model.cpp.o -c /Users/jeff/Desktop/Project4_YZ/src/show_model.cpp
+
+CMakeFiles/models.dir/src/show_model.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/models.dir/src/show_model.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jeff/Desktop/Project4_YZ/src/show_model.cpp > CMakeFiles/models.dir/src/show_model.cpp.i
+
+CMakeFiles/models.dir/src/show_model.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/models.dir/src/show_model.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jeff/Desktop/Project4_YZ/src/show_model.cpp -o CMakeFiles/models.dir/src/show_model.cpp.s
+
+CMakeFiles/models.dir/src/ar.cpp.o: CMakeFiles/models.dir/flags.make
+CMakeFiles/models.dir/src/ar.cpp.o: /Users/jeff/Desktop/Project4_YZ/src/ar.cpp
+CMakeFiles/models.dir/src/ar.cpp.o: CMakeFiles/models.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/jeff/Desktop/Project4_YZ/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/models.dir/src/ar.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/models.dir/src/ar.cpp.o -MF CMakeFiles/models.dir/src/ar.cpp.o.d -o CMakeFiles/models.dir/src/ar.cpp.o -c /Users/jeff/Desktop/Project4_YZ/src/ar.cpp
+
+CMakeFiles/models.dir/src/ar.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/models.dir/src/ar.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jeff/Desktop/Project4_YZ/src/ar.cpp > CMakeFiles/models.dir/src/ar.cpp.i
+
+CMakeFiles/models.dir/src/ar.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/models.dir/src/ar.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jeff/Desktop/Project4_YZ/src/ar.cpp -o CMakeFiles/models.dir/src/ar.cpp.s
 
 # Object files for target models
 models_OBJECTS = \
 "CMakeFiles/models.dir/src/chessboard.cpp.o" \
 "CMakeFiles/models.dir/src/camera_calibrate.cpp.o" \
 "CMakeFiles/models.dir/src/file_utils.cpp.o" \
-"CMakeFiles/models.dir/src/model.cpp.o"
+"CMakeFiles/models.dir/src/load_model.cpp.o" \
+"CMakeFiles/models.dir/src/show_model.cpp.o" \
+"CMakeFiles/models.dir/src/ar.cpp.o"
 
 # External object files for target models
 models_EXTERNAL_OBJECTS =
@@ -138,7 +168,9 @@ models_EXTERNAL_OBJECTS =
 /Users/jeff/Desktop/Project4_YZ/bin/models: CMakeFiles/models.dir/src/chessboard.cpp.o
 /Users/jeff/Desktop/Project4_YZ/bin/models: CMakeFiles/models.dir/src/camera_calibrate.cpp.o
 /Users/jeff/Desktop/Project4_YZ/bin/models: CMakeFiles/models.dir/src/file_utils.cpp.o
-/Users/jeff/Desktop/Project4_YZ/bin/models: CMakeFiles/models.dir/src/model.cpp.o
+/Users/jeff/Desktop/Project4_YZ/bin/models: CMakeFiles/models.dir/src/load_model.cpp.o
+/Users/jeff/Desktop/Project4_YZ/bin/models: CMakeFiles/models.dir/src/show_model.cpp.o
+/Users/jeff/Desktop/Project4_YZ/bin/models: CMakeFiles/models.dir/src/ar.cpp.o
 /Users/jeff/Desktop/Project4_YZ/bin/models: CMakeFiles/models.dir/build.make
 /Users/jeff/Desktop/Project4_YZ/bin/models: /usr/local/lib/libopencv_gapi.4.9.0.dylib
 /Users/jeff/Desktop/Project4_YZ/bin/models: /usr/local/lib/libopencv_stitching.4.9.0.dylib
@@ -196,7 +228,7 @@ models_EXTERNAL_OBJECTS =
 /Users/jeff/Desktop/Project4_YZ/bin/models: /usr/local/lib/libopencv_imgproc.4.9.0.dylib
 /Users/jeff/Desktop/Project4_YZ/bin/models: /usr/local/lib/libopencv_core.4.9.0.dylib
 /Users/jeff/Desktop/Project4_YZ/bin/models: CMakeFiles/models.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/jeff/Desktop/Project4_YZ/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable /Users/jeff/Desktop/Project4_YZ/bin/models"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/jeff/Desktop/Project4_YZ/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable /Users/jeff/Desktop/Project4_YZ/bin/models"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/models.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -20,7 +20,7 @@ find_package(OpenCV REQUIRED)
 
 # Task: calibration
 # Add the executable that uses threshold_process.cpp and thresholding.cpp
-add_executable(calibrate ${CMAKE_SOURCE_DIR} ./src/chessboard.cpp  ./src/camera_calibrate.cpp ./src/calibrate.cpp)
+add_executable(calibrate ${CMAKE_SOURCE_DIR} ./src/calibrate_utils.cpp ./src/calibrate.cpp  ./src/csv_utils.cpp)
 # Link with OpenCV libraries
 target_link_libraries(calibrate PRIVATE ${OpenCV_LIBS})
 # Ensure the OpenCV include directories are available to the target
@@ -28,9 +28,9 @@ target_include_directories(calibrate PRIVATE ${OpenCV_INCLUDE_DIRS})
 
 # Task: load models
 # Add the executable that uses threshold_process.cpp and thresholding.cpp
-add_executable(models ${CMAKE_SOURCE_DIR} ./src/chessboard.cpp  ./src/camera_calibrate.cpp ./src/file_utils.cpp  ./src/model.cpp)
+add_executable(show_models ${CMAKE_SOURCE_DIR} ./src/csv_utils.cpp  ./src/show_model_utils.cpp  ./src/show_model.cpp)
 # Link with OpenCV libraries
-target_link_libraries(models PRIVATE ${OpenCV_LIBS})
+target_link_libraries(show_models PRIVATE ${OpenCV_LIBS})
 # Ensure the OpenCV include directories are available to the target
-target_include_directories(models PRIVATE ${OpenCV_INCLUDE_DIRS})
+target_include_directories(show_models PRIVATE ${OpenCV_INCLUDE_DIRS})
 
