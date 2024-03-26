@@ -1,4 +1,4 @@
-# Project3_YZ: Project 4: Calibration and Augmented Reality
+# Project4_YZ: Project 4: Calibration and Augmented Reality
 
 [Project Repository](https://github.com/jeff8971/Project4_YZ)
 
