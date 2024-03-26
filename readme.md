@@ -2,8 +2,6 @@
 
 [Project Repository](https://github.com/jeff8971/Project4_YZ)
 
-[DEMO](https://drive.google.com/file/d/1jM_PgVTPZHYQJVXBxExOj3yt8gHMWUUf/view?usp=drive_link)
-
 ## Overview
 Project4_YZ is developed as part of an advanced computer vision course, focusing on camera calibration, feature detection, and model projection. The project aims to implement a system capable of calibrating a camera using a chessboard pattern, detecting robust features in images, and visualizing 3D models in the context of augmented reality.
 
