@@ -1,6 +1,21 @@
+/**
+ * @file show_model_utils.cpp
+ * @author Yuan Zhao (zhao.yuan2@northeastern.edu)
+ * @brief This file contains functions to load 3D models from OBJ files, calibrate camera parameters, validate input data, define 3D object points, project these points to image plane, and draw the 3D model or axes on frames using OpenCV. It is designed to help in visualizing 3D models in images or video streams by projecting and drawing them accurately based on camera calibration data.
+ * @version 0.1
+ * @date 2024-03-19
+ */
+
 #include "show_model_utils.hpp"
 
-
+/**
+ * Loads a 3D model from an OBJ file.
+ * 
+ * @param file_path Path to the OBJ file.
+ * @param vertices Output vector of model vertices.
+ * @param faces Output vector of indices defining the model's faces.
+ * @return int Returns 0 on success, -1 on failure (e.g., file not found, parsing error).
+ */
 int load_model_obj(std::string &file_path, std::vector<cv::Point3f> &vertices, std::vector<std::vector<int>> &faces){
     // Open the file
     std::ifstream file(file_path);
@@ -66,6 +81,14 @@ int load_model_obj(std::string &file_path, std::vector<cv::Point3f> &vertices, s
 
 }
 
+/**
+ * Loads calibration data into camera matrix and distortion coefficients.
+ * 
+ * @param vec A vector containing camera matrix and distortion coefficients data.
+ * @param camera_matrix Output camera matrix.
+ * @param distCoeffs Output distortion coefficients.
+ * @return int Returns 0 on success, -1 if the input vector is empty.
+ */
 int load_calibrate(std::vector<double> vec, cv::Mat &camera_matrix, cv::Mat &distCoeffs){
 
     if (vec.empty()) {
@@ -119,7 +142,7 @@ std::vector<cv::Point2f> project_points_to_image(std::vector<cv::Point3f> object
 }
 
 
-// 
+// draw the 3D model on the frame
 void draw_image_on_frame(cv::Mat frame, std::vector<cv::Point2f> image_points) {
 // Rectangle masking the chessboard
   std::vector<cv::Point> square_corners = {
@@ -128,7 +151,6 @@ void draw_image_on_frame(cv::Mat frame, std::vector<cv::Point2f> image_points) {
     image_points[9],
     image_points[10]
   };
-
 
   cv::polylines(frame, std::vector<std::vector<cv::Point>>{square_corners}, true, cv::Scalar(255, 255, 255), 2);
   cv::fillPoly(frame, std::vector<std::vector<cv::Point>>{square_corners}, cv::Scalar(255, 255, 255));
@@ -144,6 +166,7 @@ void draw_image_on_frame(cv::Mat frame, std::vector<cv::Point2f> image_points) {
   cv::line(frame, image_points[0], image_points[6], cv::Scalar(255, 0, 0), 3); // Z-axis in blue
 }
 
+// draw the 3D axes on the frame
 int draw_axis(cv::Mat camera_matrix, cv::Mat dist_coeffs, cv::Vec3d rvec, cv::Vec3d tvec, cv::Mat frame) {
   if (!validateInputs(camera_matrix, dist_coeffs, frame)) {
     std::cerr << "Error: Invalid inputs." << std::endl;
@@ -158,7 +181,7 @@ int draw_axis(cv::Mat camera_matrix, cv::Mat dist_coeffs, cv::Vec3d rvec, cv::Ve
 }
 
 
-
+// draw the 3D model on the frame
 int draw_object(cv::Mat camera_matrix, cv::Mat dist_coeffs, cv::Vec3d rvec, cv::Vec3d tvec, std::vector<cv::Point3f> vertices, std::vector<std::vector<int>> faces, cv::Mat &frame){
   // check if the camera matrix, distortion coefficients, vertices, faces, and frame are empty
   if (camera_matrix.empty() || dist_coeffs.empty() || vertices.empty() || faces.empty() || frame.empty()){

@@ -1,9 +1,13 @@
-#include <iostream>
-#include <opencv2/opencv.hpp>
+/**
+ * @file calibrate.cpp
+ * @author Yuan Zhao (zhao.yuan2@northeastern.edu)
+ * @brief main entry for camera calibration
+ * @version 0.1
+ * @date 2024-03-19
+ */
+
 #include "calibrate_utils.hpp"
 #include "csv_utils.h"
-
-
 #include <iostream>
 #include <opencv2/opencv.hpp>
 #include <sstream>
@@ -14,7 +18,7 @@
 #include <thread>
 
 
-
+// main entry for camera calibration
 int main(int argc, char** argv) {
     cv::VideoCapture capture(1); // Open default camera. Use a iphone for external camera.
 

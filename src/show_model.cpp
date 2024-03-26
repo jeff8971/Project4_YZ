@@ -1,3 +1,10 @@
+/**
+ * @file show_model.cpp
+ * @author Yuan Zhao (zhao.yuan2@northeastern.edu)
+ * @brief main entry for showing the model object
+ * @version 0.1
+ * @date 2024-03-19
+ */
 
 #include "csv_utils.h"
 #include "show_model_utils.hpp"
@@ -13,7 +20,7 @@
 #include <thread>
 
 
-
+// main entry for showing the model object
 int main(int argc, char** argv) {
     
     std::string calibrate_file_path = "/Users/jeff/Desktop/Project4_YZ/data/calibrate.csv";

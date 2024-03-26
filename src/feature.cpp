@@ -1,7 +1,21 @@
+/**
+ * @file feature.cpp
+ * @author Yuan Zhao (zhao.yuan2@northeastern.edu)
+ * @brief main entry for feature detection using different algorithms
+ * @version 0.1
+ * @date 2024-03-25
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
+
 #include <opencv2/opencv.hpp>
 #include <opencv2/xfeatures2d.hpp>
 #include <iostream>
 
+// Define a function to process video frames and extract features using different algorithms.
+// @param capture The video capture object to read frames from.
 void processFeatures(cv::VideoCapture& capture) {
     cv::Mat frame, grayFrame;
     std::string currentFeature = "SURF"; // Default feature detection method
@@ -58,6 +72,7 @@ void processFeatures(cv::VideoCapture& capture) {
     }
 }
 
+// The main function initializes video capture and calls processFeatures to start processing.
 int main() {
     cv::VideoCapture capture(0); // Open default camera
     if (!capture.isOpened()) {
