@@ -142,6 +142,19 @@ show_models/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/show_models.dir/build.make CMakeFiles/show_models.dir/build
 .PHONY : show_models/fast
 
+#=============================================================================
+# Target rules for targets named features
+
+# Build rule for target.
+features: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 features
+.PHONY : features
+
+# fast build rule for target.
+features/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/features.dir/build.make CMakeFiles/features.dir/build
+.PHONY : features/fast
+
 src/calibrate.o: src/calibrate.cpp.o
 .PHONY : src/calibrate.o
 
@@ -172,6 +185,7 @@ src/calibrate_utils.o: src/calibrate_utils.cpp.o
 # target to build an object file
 src/calibrate_utils.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/calibrate.dir/build.make CMakeFiles/calibrate.dir/src/calibrate_utils.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/show_models.dir/build.make CMakeFiles/show_models.dir/src/calibrate_utils.cpp.o
 .PHONY : src/calibrate_utils.cpp.o
 
 src/calibrate_utils.i: src/calibrate_utils.cpp.i
@@ -180,6 +194,7 @@ src/calibrate_utils.i: src/calibrate_utils.cpp.i
 # target to preprocess a source file
 src/calibrate_utils.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/calibrate.dir/build.make CMakeFiles/calibrate.dir/src/calibrate_utils.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/show_models.dir/build.make CMakeFiles/show_models.dir/src/calibrate_utils.cpp.i
 .PHONY : src/calibrate_utils.cpp.i
 
 src/calibrate_utils.s: src/calibrate_utils.cpp.s
@@ -188,6 +203,7 @@ src/calibrate_utils.s: src/calibrate_utils.cpp.s
 # target to generate assembly for a file
 src/calibrate_utils.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/calibrate.dir/build.make CMakeFiles/calibrate.dir/src/calibrate_utils.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/show_models.dir/build.make CMakeFiles/show_models.dir/src/calibrate_utils.cpp.s
 .PHONY : src/calibrate_utils.cpp.s
 
 src/csv_utils.o: src/csv_utils.cpp.o
@@ -216,6 +232,30 @@ src/csv_utils.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/calibrate.dir/build.make CMakeFiles/calibrate.dir/src/csv_utils.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/show_models.dir/build.make CMakeFiles/show_models.dir/src/csv_utils.cpp.s
 .PHONY : src/csv_utils.cpp.s
+
+src/feature.o: src/feature.cpp.o
+.PHONY : src/feature.o
+
+# target to build an object file
+src/feature.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/features.dir/build.make CMakeFiles/features.dir/src/feature.cpp.o
+.PHONY : src/feature.cpp.o
+
+src/feature.i: src/feature.cpp.i
+.PHONY : src/feature.i
+
+# target to preprocess a source file
+src/feature.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/features.dir/build.make CMakeFiles/features.dir/src/feature.cpp.i
+.PHONY : src/feature.cpp.i
+
+src/feature.s: src/feature.cpp.s
+.PHONY : src/feature.s
+
+# target to generate assembly for a file
+src/feature.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/features.dir/build.make CMakeFiles/features.dir/src/feature.cpp.s
+.PHONY : src/feature.cpp.s
 
 src/show_model.o: src/show_model.cpp.o
 .PHONY : src/show_model.o
@@ -274,6 +314,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... calibrate"
+	@echo "... features"
 	@echo "... show_models"
 	@echo "... src/calibrate.o"
 	@echo "... src/calibrate.i"
@@ -284,6 +325,9 @@ help:
 	@echo "... src/csv_utils.o"
 	@echo "... src/csv_utils.i"
 	@echo "... src/csv_utils.s"
+	@echo "... src/feature.o"
+	@echo "... src/feature.i"
+	@echo "... src/feature.s"
 	@echo "... src/show_model.o"
 	@echo "... src/show_model.i"
 	@echo "... src/show_model.s"

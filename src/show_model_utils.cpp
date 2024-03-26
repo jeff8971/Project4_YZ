@@ -1,7 +1,6 @@
 #include "show_model_utils.hpp"
 
 
-
 int load_model_obj(std::string &file_path, std::vector<cv::Point3f> &vertices, std::vector<std::vector<int>> &faces){
     // Open the file
     std::ifstream file(file_path);
@@ -67,162 +66,122 @@ int load_model_obj(std::string &file_path, std::vector<cv::Point3f> &vertices, s
 
 }
 
+int load_calibrate(std::vector<double> vec, cv::Mat &camera_matrix, cv::Mat &distCoeffs){
 
-
-std::vector<cv::Point3f> set_axes_points() {
-    std::vector<cv::Point3f> axes_points;
-
-    // Define the 3D points for the axes
-    axes_points.push_back(cv::Point3f(0, 0, 0));  // Origin
-    axes_points.push_back(cv::Point3f(3, 0, 0));  // X-axis
-    axes_points.push_back(cv::Point3f(0, 3, 0));  // Y-axis
-    axes_points.push_back(cv::Point3f(0, 0, -3));  // Z-axis
-
-    return axes_points;
-}
-
-
-bool inside_rectangle(const cv::Point2f &p, const std::vector<cv::Point2f> &rectangle) {
-    double area_rect = cv::contourArea(rectangle);
-    double area_range = cv::contourArea(std::vector<cv::Point2f>{rectangle[0], rectangle[1], p}) +
-                    cv::contourArea(std::vector<cv::Point2f>{rectangle[1], rectangle[2], p}) +
-                    cv::contourArea(std::vector<cv::Point2f>{rectangle[2], rectangle[3], p}) +
-                    cv::contourArea(std::vector<cv::Point2f>{rectangle[3], rectangle[0], p});
-    
-    return std::abs(area_rect - area_range) < 1e-3;
-
-}
-
-
-// Draw Virtual Reality model
-void draw_vr_model(cv::Mat &frame,
-                    const std::vector<cv::Point2f> &corner_set, 
-                    const cv::Size& chessboard_size,
-                    const cv::Mat &camera_matrix, 
-                    const cv::Mat &dist_coeffs, 
-                    const cv::Mat &rvec, 
-                    const cv::Mat &tvec) {
-
-    std::vector<cv::Point2f> chessboard_bound = {
-        corner_set.front(),
-        corner_set[chessboard_size.width - 1],
-        corner_set.back(),
-        corner_set[chessboard_size.width * (chessboard_size.height - 1)]
-    };
-
-    // Define the 3D coordinates of the object
-    float base_size = 0.5f;
-    float height = 0.5f;
-
-
-    // chessboard, 9x6
-    float cb_center_x = chessboard_size.width / 2.0f - 0.5f;
-    float cb_center_y = - (chessboard_size.height / 2.0f - 0.5f);
-
-    float offset_x = cb_center_x;
-    float offset_y = cb_center_y;
-
-
-    std::vector<cv::Point3f> object_set = {
-        cv::Point3f(-0.5f + offset_x, -0.5f + offset_y, 0.0f),
-        cv::Point3f(0.5f + offset_x, -0.5f + offset_y, 0.0f),
-        cv::Point3f(0.5f + offset_x, 0.5f + offset_y, 0.0f),
-        cv::Point3f(-0.5f + offset_x, 0.5f + offset_y, 0.0f),
-    };
-
-
-    // Project the 3D points to the image plane
-    std::vector<cv::Point2f> img_sets;
-    cv::projectPoints(object_set, rvec, tvec, camera_matrix, dist_coeffs, img_sets);
-
-    for (const auto &img_point : img_sets) {
-        if (!inside_rectangle(img_point, chessboard_bound)) {
-            // make the object smaller
-            base_size *= 0.75f;
-            height *= 0.75f;
-
-            object_set = {
-                cv::Point3f(-base_size + offset_x, -base_size + offset_y, 0.0f),
-                cv::Point3f(base_size + offset_x, -base_size + offset_y, 0.0f),
-                cv::Point3f(base_size + offset_x, base_size + offset_y, 0.0f),
-                cv::Point3f(-base_size + offset_x, base_size + offset_y, 0.0f),
-                cv::Point3f(offset_x, offset_y, height)
-            };
-        }
-        cv::projectPoints(object_set, rvec, tvec, camera_matrix, dist_coeffs, img_sets);
-        break;
+    if (vec.empty()) {
+        printf("error: vector is empty.\n");
+        return (-1);
     }
 
-    // Draw the object
-    for (int i = 0; i < 4; i++) {
-        cv::line(frame, img_sets[i], img_sets[(i + 1) % 4], cv::Scalar(0, 0, 255), 5);
-        cv::line(frame, img_sets[i], img_sets[4], cv::Scalar(0, 0, 255), 5);
-    }
-
-    for (int i = 0; i < 4; i++) {
-        cv::line(frame, img_sets[i], img_sets[(i + 1) % 4], cv::Scalar(0, 0, 255), 8);
-    }
-
-}
-
-
-
-int load_calibrate_file(std::vector<double> &camera_matrix_data, cv::Mat &camera_matrix, cv::Mat &dist_coeffs) {
-    
-    // check if the vector has data or not
-    if (camera_matrix_data.empty()) {
-        std::cerr << "Camera matrix data is empty." << std::endl;
-        return -1;
-    }
-    
+    // init the camera matrix and distortion coefficients
     camera_matrix = cv::Mat::zeros(3, 3, CV_64F);
-    dist_coeffs = cv::Mat::zeros(1, 14, CV_64F);
+    distCoeffs = cv::Mat::zeros(1, 14, CV_64F);
 
-    // load the camera matrix and distortion coefficients
-    for (int i = 0; i < camera_matrix.cols; i++) {
-        for (int j = 0; j < camera_matrix.rows; j++) {
-            camera_matrix.at<double>(j, i) = camera_matrix_data[i * camera_matrix.rows + j];
+    // convert the vector to camera matrix
+    for (int i = 0; i < camera_matrix.cols; i++){
+        for (int j = 0; j < camera_matrix.rows; j++){
+        camera_matrix.at<double>(j, i) = vec[i * camera_matrix.rows + j];
         }
     }
 
-    // load the distortion coefficients
-    for (int i = 0; i < dist_coeffs.cols; i++) {
-        dist_coeffs.at<double>(0, i) = camera_matrix_data[i + camera_matrix.cols * camera_matrix.rows];
+    // convert the vector to distortion coefficients
+    for (int i = 0; i < distCoeffs.cols; i++){
+        distCoeffs.at<double>(0, i) = vec[camera_matrix.rows * camera_matrix.cols + i];
     }
 
-    return 0;
+    return (0);
+}
+  
+
+// error handling for the input data
+bool validateInputs(cv::Mat camera_matrix, cv::Mat dist_coeffs, cv::Mat frame) {
+  return !(camera_matrix.empty() || dist_coeffs.empty() || frame.empty());
 }
 
-void print_menu_calibrate() {
-    std::cout << "Select an option:" << std::endl;
-    std::cout << "Press 's' to save a calibration image. (make sure not less than 5)" << std::endl;
-    std::cout << "Press 'c' to perform calibration." << std::endl;
+// define the 3D points of the object
+std::vector<cv::Point3f> define_object_points() {
+  std::vector<cv::Point3f> object_points = {
+    // Chessboard corners
+    cv::Point3f(0, 0, 0), cv::Point3f(8, 0, 0), cv::Point3f(8, -5, 0), cv::Point3f(0, -5, 0),
+    // 3D axes
+    cv::Point3f(2, 0, 0), cv::Point3f(0, -2, 0), cv::Point3f(0, 0, 2),
+    // Rectangle around the chessboard
+    cv::Point3f(-1, 1, 0), cv::Point3f(9, 1, 0), cv::Point3f(9, -6, 0), cv::Point3f(-1, -6, 0)
+  };
+  return object_points;
+}
+
+// project the 3D points to the image plane
+std::vector<cv::Point2f> project_points_to_image(std::vector<cv::Point3f> object_points, cv::Mat camera_matrix, cv::Mat dist_coeffs, cv::Vec3d rvec, cv::Vec3d tvec) {
+  std::vector<cv::Point2f> image_points;
+  cv::projectPoints(object_points, rvec, tvec, camera_matrix, dist_coeffs, image_points);
+  return image_points;
+}
+
+
+// 
+void draw_image_on_frame(cv::Mat frame, std::vector<cv::Point2f> image_points) {
+// Rectangle masking the chessboard
+  std::vector<cv::Point> square_corners = {
+    image_points[7],
+    image_points[8],
+    image_points[9],
+    image_points[10]
+  };
+
+
+  cv::polylines(frame, std::vector<std::vector<cv::Point>>{square_corners}, true, cv::Scalar(255, 255, 255), 2);
+  cv::fillPoly(frame, std::vector<std::vector<cv::Point>>{square_corners}, cv::Scalar(255, 255, 255));
+
+  // Draw the four outside corners of the chessboard as circles
+  for (int i = 0; i < 4; i++) {
+    cv::circle(frame, image_points[i], 6, cv::Scalar(0, 0, 0), -1);
+  }
+  
+  // Draw the 3D axes at the origin of the chessboard
+  cv::line(frame, image_points[0], image_points[4], cv::Scalar(0, 0, 255), 3); // X-axis in red
+  cv::line(frame, image_points[0], image_points[5], cv::Scalar(0, 255, 0), 3); // Y-axis in green
+  cv::line(frame, image_points[0], image_points[6], cv::Scalar(255, 0, 0), 3); // Z-axis in blue
+}
+
+int draw_axis(cv::Mat camera_matrix, cv::Mat dist_coeffs, cv::Vec3d rvec, cv::Vec3d tvec, cv::Mat frame) {
+  if (!validateInputs(camera_matrix, dist_coeffs, frame)) {
+    std::cerr << "Error: Invalid inputs." << std::endl;
+    return -1;
+  }
+
+  auto objectPoints = define_object_points();
+  auto image_points = project_points_to_image(objectPoints, camera_matrix, dist_coeffs, rvec, tvec);
+  draw_image_on_frame(frame, image_points);
+
+  return 0;
 }
 
 
 
-void print_menu_show_model() {
-    std::cout << "Select an option:" << std::endl;
-    std::cout << "Press 'p' to print board's pose." << std::endl;
-    std::cout << "Press 'k' to display the virtual object persistently on the chessboard." << std::endl;
-    std::cout << "Press 'f' to display a robust feature on the chessboard." << std::endl;
-    std::cout << "Press 'q' to exit." << std::endl;
-}
+int draw_object(cv::Mat camera_matrix, cv::Mat dist_coeffs, cv::Vec3d rvec, cv::Vec3d tvec, std::vector<cv::Point3f> vertices, std::vector<std::vector<int>> faces, cv::Mat &frame){
+  // check if the camera matrix, distortion coefficients, vertices, faces, and frame are empty
+  if (camera_matrix.empty() || dist_coeffs.empty() || vertices.empty() || faces.empty() || frame.empty()){
+    printf("error: camera matrix, distortion coefficients, vertices, faces, or frame is empty.\n");
+    return (-1);
+  }
 
-void load_3D_axes(const cv::Mat &frame, const cv::Mat &camera_matrix, const cv::Mat &dist_coeffs, const cv::Mat &rvec, const cv::Mat &tvec) {
-    // 3D points of the axes
-    std::vector<cv::Point3f> axes_points = {
-            {0, 0, 0}, // origin
-            {1, 0, 0}, // x-axis
-            {0, 1, 0}, // y-axis
-            {0, 0, -1}  // z-axis
-    };
-    // Project the 3D points to the image plane
-    std::vector<cv::Point2f> image_points;
-    cv::projectPoints(axes_points, rvec, tvec, camera_matrix, dist_coeffs, image_points);
+  // project the vertices to the image plane
+  std::vector<cv::Point2f> image_points;
+  cv::projectPoints(vertices, rvec, tvec, camera_matrix, dist_coeffs, image_points);
 
-    // Draw the axes
-    cv::line(frame, image_points[0], image_points[1], cv::Scalar(0, 0, 255), 5); // x-axis
-    cv::line(frame, image_points[0], image_points[2], cv::Scalar(0, 255, 0), 5); // y-axis
-    cv::line(frame, image_points[0], image_points[3], cv::Scalar(255, 0, 0), 5); // z-axis
+  // draw the faces of the object
+  for (int i = 0; i < faces.size(); i++){
+    // map the z coordinate of the face to a color
+    float z = (vertices[faces[i][0]].z + vertices[faces[i][1]].z + vertices[faces[i][2]].z) / 3;
+    int color = (int)(z / 3.5 * 155) + 100;
+    cv::Scalar faceColor(color, color, color);
+
+    // draw the face
+    for (int j = 0; j < 3; j++){
+      cv::line(frame, image_points[faces[i][j]], image_points[faces[i][(j + 1) % 3]], faceColor, 3);
+    }
+  }
+
+  return (0);
 }

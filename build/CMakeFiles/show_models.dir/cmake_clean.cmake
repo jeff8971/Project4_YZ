@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "/Users/jeff/Desktop/Project4_YZ/bin/show_models"
   "/Users/jeff/Desktop/Project4_YZ/bin/show_models.pdb"
+  "CMakeFiles/show_models.dir/src/calibrate_utils.cpp.o"
+  "CMakeFiles/show_models.dir/src/calibrate_utils.cpp.o.d"
   "CMakeFiles/show_models.dir/src/csv_utils.cpp.o"
   "CMakeFiles/show_models.dir/src/csv_utils.cpp.o.d"
   "CMakeFiles/show_models.dir/src/show_model.cpp.o"

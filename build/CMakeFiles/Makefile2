@@ -65,6 +65,7 @@ CMAKE_BINARY_DIR = /Users/jeff/Desktop/Project4_YZ/build
 # The main recursive "all" target.
 all: CMakeFiles/calibrate.dir/all
 all: CMakeFiles/show_models.dir/all
+all: CMakeFiles/features.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -74,6 +75,7 @@ preinstall:
 # The main recursive "clean" target.
 clean: CMakeFiles/calibrate.dir/clean
 clean: CMakeFiles/show_models.dir/clean
+clean: CMakeFiles/features.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -109,12 +111,12 @@ CMakeFiles/calibrate.dir/clean:
 CMakeFiles/show_models.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/show_models.dir/build.make CMakeFiles/show_models.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/show_models.dir/build.make CMakeFiles/show_models.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/jeff/Desktop/Project4_YZ/build/CMakeFiles --progress-num=5,6,7,8 "Built target show_models"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/jeff/Desktop/Project4_YZ/build/CMakeFiles --progress-num=7,8,9,10,11 "Built target show_models"
 .PHONY : CMakeFiles/show_models.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/show_models.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jeff/Desktop/Project4_YZ/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jeff/Desktop/Project4_YZ/build/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/show_models.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jeff/Desktop/Project4_YZ/build/CMakeFiles 0
 .PHONY : CMakeFiles/show_models.dir/rule
@@ -127,6 +129,32 @@ show_models: CMakeFiles/show_models.dir/rule
 CMakeFiles/show_models.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/show_models.dir/build.make CMakeFiles/show_models.dir/clean
 .PHONY : CMakeFiles/show_models.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/features.dir
+
+# All Build rule for target.
+CMakeFiles/features.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/features.dir/build.make CMakeFiles/features.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/features.dir/build.make CMakeFiles/features.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/jeff/Desktop/Project4_YZ/build/CMakeFiles --progress-num=5,6 "Built target features"
+.PHONY : CMakeFiles/features.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/features.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jeff/Desktop/Project4_YZ/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/features.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jeff/Desktop/Project4_YZ/build/CMakeFiles 0
+.PHONY : CMakeFiles/features.dir/rule
+
+# Convenience name for target.
+features: CMakeFiles/features.dir/rule
+.PHONY : features
+
+# clean rule for target.
+CMakeFiles/features.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/features.dir/build.make CMakeFiles/features.dir/clean
+.PHONY : CMakeFiles/features.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

@@ -81,10 +81,18 @@ int main(int argc, char** argv) {
                 std::cout << "Reprojection error: \n" << std::endl << reProjectionError << std::endl;
 
                 std::vector<double> camera_matrix_data;
-                save_camera_calibration(camera_matrix_data, camera_matrix, dist_coeffs);
+                if (save_camera_calibration(camera_matrix_data, camera_matrix, dist_coeffs) == 0) {
+                    std::cout << "Camera calibration data saved successfully" << std::endl;
+                } else {
+                    std::cerr << "Failed to save camera calibration data" << std::endl;
+                }
 
                 std::string calibration_file_path = "/Users/jeff/Desktop/Project4_YZ/data/calibrate.csv";
-                append_object_data_csv(calibration_file_path, "calibration", camera_matrix_data, true);
+                if (append_object_data_csv(calibration_file_path, "calibration", camera_matrix_data, true) == 0){
+                    std::cout << "Calibration data saved to " << calibration_file_path << std::endl;
+                } else {
+                    std::cerr << "Failed to save calibration data to " << calibration_file_path << std::endl;
+                }
 
             } else {
                 std::cerr << "Not enough images to calibrate the camera, need at least 5" << std::endl;

@@ -119,8 +119,7 @@ int append_object_data_csv(std::string filename, std::string object_label, std::
 
   strcpy(mode, "a");
 
-  if (reset_file)
-  {
+  if (reset_file){
     strcpy(mode, "w");
   }
 

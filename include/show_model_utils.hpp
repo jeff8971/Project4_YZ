@@ -1,14 +1,7 @@
 #ifndef SHOW_MODEL_UTILS_HPP
 #define SHOW_MODEL_UTILS_HPP
 
-#include <vector>
-#include <string>
-#include <string>
-#include <fstream>
-#include <iostream>
 #include <sstream>
-
-
 #include <iostream>
 #include <regex>
 #include <vector>
@@ -16,43 +9,20 @@
 #include <fstream>
 #include <opencv2/opencv.hpp>
 
-int load_calibrate_file(std::vector<double> &camera_matrix_data, cv::Mat &camera_matrix, cv::Mat &dist_coeffs);
-   
-void print_menu_calibrate();
-
-void print_menu_show_model();
-
-
-struct Vertex {
-    float x, y, z;
-};
-
-struct TextureCoord {
-    float u, v;
-};
-
-struct Normal {
-    float nx, ny, nz;
-};
-
-struct Face {
-    std::vector<int> vertex_indices;
-    std::vector<int> texture_indices;
-    std::vector<int> normal_indices;
-};
+int load_calibrate(std::vector<double> vec, cv::Mat &cameraMatrix, cv::Mat &distCoeffs);
 
 int load_model_obj(std::string &file_path, std::vector<cv::Point3f> &vertices, std::vector<std::vector<int>> &faces);
 
-std::vector<cv::Point3f> set_axes_points();
+bool validateInputs(cv::Mat cameraMatrix, cv::Mat distCoeffs, cv::Mat frame);
 
-bool inside_rectangle(const cv::Point2f &p, const std::vector<cv::Point2f> &rectangle);
+std::vector<cv::Point3f> define_object_points();
 
-void draw_vr_model(cv::Mat &frame,
-                    const std::vector<cv::Point2f> &corner_set, 
-                    const cv::Size& chessboard_size,
-                    const cv::Mat &camera_matrix, 
-                    const cv::Mat &dist_coeffs, 
-                    const cv::Mat &rvec, 
-                    const cv::Mat &tvec);
+std::vector<cv::Point2f> project_points_to_image(std::vector<cv::Point3f> object_points, cv::Mat camera_matrix, cv::Mat dist_coeffs, cv::Vec3d rvec, cv::Vec3d tvec);
+  
+void draw_image_on_frame(cv::Mat frame, std::vector<cv::Point2f> image_points);
 
-#endif // LOAD_MODEL_HPP
+int draw_axis(cv::Mat camera_matrix, cv::Mat dist_coeffs, cv::Vec3d rvec, cv::Vec3d tvec, cv::Mat frame);
+
+int draw_object(cv::Mat camera_matrix, cv::Mat dist_coeffs, cv::Vec3d rvec, cv::Vec3d tvec, std::vector<cv::Point3f> vertices, std::vector<std::vector<int>> faces, cv::Mat &frame);
+ 
+#endif 

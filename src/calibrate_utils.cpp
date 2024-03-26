@@ -13,16 +13,13 @@ bool detect_chessboard(cv::Mat &frame, cv::Size &chessboard_size, std::vector<cv
 
 }
 
+// calibrate the camera
 double camera_calibrate(const std::vector<std::vector<cv::Vec3f>>& point_list, 
                       const std::vector<std::vector<cv::Point2f>>& corner_list, 
                       const cv::Size& image_size, 
                       cv::Mat& camera_matrix, 
                       cv::Mat& dist_coeffs){
     
-    // make sure the calibrate function has enough data >= 5
-
-
-
     camera_matrix = cv::Mat::eye(3, 3, CV_64FC1);
     camera_matrix.at<double>(0, 2) = image_size.width / 2;  
     camera_matrix.at<double>(1, 2) = image_size.height / 2;

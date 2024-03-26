@@ -50,4 +50,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/calibrate.dir/DependInfo.cmake"
   "CMakeFiles/show_models.dir/DependInfo.cmake"
+  "CMakeFiles/features.dir/DependInfo.cmake"
   )

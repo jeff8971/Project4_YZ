@@ -16,7 +16,8 @@
 					"targetIndexes" : 
 					[
 						0,
-						1
+						1,
+						2
 					]
 				}
 			],
@@ -32,7 +33,8 @@
 					"targetIndexes" : 
 					[
 						0,
-						1
+						1,
+						2
 					]
 				}
 			],
@@ -47,8 +49,15 @@
 				},
 				{
 					"directoryIndex" : 0,
+					"id" : "features::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-features-Debug-6eb7b4b20d9367d081cf.json",
+					"name" : "features",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
 					"id" : "show_models::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-show_models-Debug-d357054ca7a7532609b4.json",
+					"jsonFile" : "target-show_models-Debug-9d75b6651ada06459650.json",
 					"name" : "show_models",
 					"projectIndex" : 0
 				}

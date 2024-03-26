@@ -28,9 +28,16 @@ target_include_directories(calibrate PRIVATE ${OpenCV_INCLUDE_DIRS})
 
 # Task: load models
 # Add the executable that uses threshold_process.cpp and thresholding.cpp
-add_executable(show_models ${CMAKE_SOURCE_DIR} ./src/csv_utils.cpp  ./src/show_model_utils.cpp  ./src/show_model.cpp)
+add_executable(show_models ${CMAKE_SOURCE_DIR} ./src/csv_utils.cpp  ./src/show_model_utils.cpp  ./src/show_model.cpp ./src/calibrate_utils.cpp)
 # Link with OpenCV libraries
 target_link_libraries(show_models PRIVATE ${OpenCV_LIBS})
 # Ensure the OpenCV include directories are available to the target
 target_include_directories(show_models PRIVATE ${OpenCV_INCLUDE_DIRS})
 
+# Task: detect rebust features
+# Add the executable that uses threshold_process.cpp and thresholding.cpp
+add_executable(features ${CMAKE_SOURCE_DIR} ./src/feature.cpp)
+# Link with OpenCV libraries
+target_link_libraries(features PRIVATE ${OpenCV_LIBS})
+# Ensure the OpenCV include directories are available to the target
+target_include_directories(features PRIVATE ${OpenCV_INCLUDE_DIRS})
